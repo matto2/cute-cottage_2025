@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import exterior from "../assets/exterior.jpg";
 
 const images = [
   "exterior.jpg", // Added first
@@ -94,7 +95,7 @@ const images = [
           class="relative group overflow-hidden rounded-lg"
         >
           <img
-            src={`/src/assets/${image}`}
+            src={`../src/assets/${image}`}
             alt={image.replace(".jpg", "")}
             class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
           />
