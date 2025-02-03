@@ -1,22 +1,53 @@
+---
+import "../styles/global.css";
+import "photoswipe/style.css";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <div class="mx-auto px-4 2xl:px-0 max-w-6xl">
+      <slot />
+    </div>
+    <!-- Ensure PhotoSwipe runs only on the client -->
+    <script client:load type="module">
+      console.log("Astro script is running");
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        console.log("Initializing PhotoSwipe");
+
+        // Use full import path
+        const { default: PhotoSwipeLightbox } = await import(
+          "/node_modules/photoswipe/dist/photoswipe-lightbox.esm.js"
+        );
+
+        const lightbox = new PhotoSwipeLightbox({
+          gallery: "#gallery--getting-started",
+          children: "a",
+          pswpModule: () =>
+            import("/node_modules/photoswipe/dist/photoswipe.esm.js"),
+        });
+
+        lightbox.init();
+
+        console.log("PhotoSwipe initialized:", lightbox);
+      });
+    </script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

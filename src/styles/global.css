@@ -1,0 +1,23 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss";
+
+body {
+    color: #44403C; /* Stone-800 equivalent */
+}
+
+h1 {
+    font-size: 3rem; /* Tailwind's text-5xl */
+    font-weight: bold;
+    padding-top: 3rem;
+    padding-bottom: 0.5rem;
+    color: #7c3aed; /* Tailwind's text-violet-600 */
+}
+
+h3 {
+    color: #7c3aed; /* Tailwind's text-violet-600 */
+}
+
+/* Restore other styles as needed */

@@ -4,11 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.3"
+    "@tailwindcss/vite": "^4.0.3",
+    "astro": "^5.2.3",
+    "photoswipe": "^5.4.4"
   }
 }
