@@ -1,8 +1,6 @@
 ---
 import "../styles/global.css";
 import "photoswipe/style.css";
-
-import PhotoSwipeLightbox from "photoswipe/lightbox";
 ---
 
 <!doctype html>
@@ -21,30 +19,18 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
       <slot />
     </div>
     <!-- Ensure PhotoSwipe runs only on the client -->
-    <script client:inline type="module">
+    <script is:inline type="module">
       import PhotoSwipeLightbox from "https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js";
 
-      console.log("Astro script is running");
-
-      document.addEventListener("DOMContentLoaded", async () => {
-        console.log("Initializing PhotoSwipe");
-
-        // // Use full import path
-        // const { default: PhotoSwipeLightbox } = await import(
-        //   "/node_modules/photoswipe/dist/photoswipe-lightbox.esm.js"
-        // );
-
-        const lightbox = new PhotoSwipeLightbox({
-          gallery: "#gallery--getting-started",
-          children: "a",
-          pswpModule: () =>
-            import("/node_modules/photoswipe/dist/photoswipe.esm.js"),
-        });
-
-        lightbox.init();
-
-        console.log("PhotoSwipe initialized:", lightbox);
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: "#botanicalsGallery",
+        children: "a",
+        pswpModule: () => import("https://unpkg.com/photoswipe"),
+        mainClass: "pswp--custom-bg",
+        bgOpacity: 1, // Ensure the background is fully opaque
       });
+
+      lightbox.init();
     </script>
   </body>
 </html>
