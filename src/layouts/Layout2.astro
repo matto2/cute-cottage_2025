@@ -22,15 +22,17 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     </div>
     <!-- Ensure PhotoSwipe runs only on the client -->
     <script client:inline type="module">
+      import PhotoSwipeLightbox from "https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js";
+
       console.log("Astro script is running");
 
       document.addEventListener("DOMContentLoaded", async () => {
         console.log("Initializing PhotoSwipe");
 
-        // Use full import path
-        const { default: PhotoSwipeLightbox } = await import(
-          "/node_modules/photoswipe/dist/photoswipe-lightbox.esm.js"
-        );
+        // // Use full import path
+        // const { default: PhotoSwipeLightbox } = await import(
+        //   "/node_modules/photoswipe/dist/photoswipe-lightbox.esm.js"
+        // );
 
         const lightbox = new PhotoSwipeLightbox({
           gallery: "#gallery--getting-started",
