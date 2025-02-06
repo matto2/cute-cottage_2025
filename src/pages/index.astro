@@ -42,15 +42,6 @@ import exterior from "../assets/exterior.jpg";
         </p>
       </p>
 
-      <p class="text-xl font-semibold">
-        <a
-          href="mailto:mattosurf@gmail.com"
-          class="text-red-700 underline hover:text-violet-700 font-bold"
-        >
-          Contact us today
-        </a> to schedule your tour!
-      </p>
-
       <h3 class="text-3xl mt-4 font-bold">$2900/month</h3>
 
       <!-- Uncomment if you want to include a Text Matt button -->
@@ -81,28 +72,15 @@ import exterior from "../assets/exterior.jpg";
     </div>
   </div>
 
-  <!-- <div
-    class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-2 md:p-0"
-    id="gallery--getting-started"
-  >
-    {
-      images.map((image) => (
-        <a
-          href={`/${image}`}
-          data-pswp-src={`/${image}`}
-          data-pswp-width="2448"
-          data-pswp-height="3264"
-          class="relative group overflow-hidden rounded-lg"
-        >
-          <img
-            src={`/${image}`}
-            alt={image.replace(".jpg", "")}
-            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-        </a>
-      ))
-    }
-  </div> -->
+  <Gallery />
+
+  <p class="text-2xl font-semibold my-6">
+    <a
+      href="mailto:mattosurf@gmail.com"
+      class="text-red-700 underline hover:text-violet-700 font-bold"
+    >
+      Contact us today
+    </a> to schedule your tour!
+  </p>
 </Layout>
-<Gallery />
 <Footer />
