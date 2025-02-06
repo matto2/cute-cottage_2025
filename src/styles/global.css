@@ -11,13 +11,17 @@ body {
 h1 {
     font-size: 3rem; /* Tailwind's text-5xl */
     font-weight: bold;
-    padding-top: 3rem;
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
     color: #7c3aed; /* Tailwind's text-violet-600 */
 }
 
 h3 {
     color: #7c3aed; /* Tailwind's text-violet-600 */
+}
+
+.pswp__bg {
+    background-color: rgba(76, 4, 179, 0.8) !important;
 }
 
 /* Restore other styles as needed */

@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout2.astro";
-import exterior from "../assets/exterior.jpg";
 import IMG_3452 from "../assets/IMG_3452.jpg";
 import IMG_3453 from "../assets/IMG_3453.jpg";
 import IMG_3455 from "../assets/IMG_3455.jpg";
@@ -16,7 +15,6 @@ import IMG_3466 from "../assets/IMG_3466.jpg";
 import IMG_3467 from "../assets/IMG_3467.jpg";
 
 const images = [
-  { src: exterior, alt: "exterior" },
   { src: IMG_3452, alt: "interior" },
   { src: IMG_3453, alt: "interior" },
   { src: IMG_3455, alt: "interior" },
@@ -36,10 +34,10 @@ const images = [
 <Layout>
  
 
-  <div class="mt-12 mx-4 xl:mx-8 flex">
+  <div class="mt-12 mx-4 md:mx-0 flex">
  
     <div>
-      <div class="pswp-gallery columns-1 md:columns-3 2xl:columns-4 gap-6 space-y-6 mx-4 xl:mx-8" id="botanicalsGallery">
+      <div class="pswp-gallery columns-1 md:columns-3 2xl:columns-4 gap-5 space-y-6 xl:mx-0" id="botanicalsGallery">
         {
           images.map((image) => (
             <div class="break-inside-avoid mb-6">

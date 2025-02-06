@@ -2,83 +2,91 @@
 import Layout from "../layouts/Layout.astro";
 import Gallery from "../components/Gallery.astro";
 import Footer from "../components/Footer.astro";
+import Image from "astro/components/Image.astro";
+import exterior from "../assets/exterior.jpg";
 
-const images = [
-  "exterior.jpg", // Added first
-  "IMG_3452.jpg",
-  "IMG_3453.jpg",
-  "IMG_3455.jpg",
-  "IMG_3456.jpg",
-  "IMG_3457.jpg",
-  "IMG_3458.jpg",
-  "IMG_3460.jpg",
-  "IMG_3461.jpg",
-  "IMG_3463.jpg",
-  "IMG_3464.jpg",
-  "IMG_3465.jpg",
-  "IMG_3466.jpg",
-  "IMG_3467.jpg",
-];
+// const images = [
+//   "IMG_3452.jpg",
+//   "IMG_3453.jpg",
+//   "IMG_3455.jpg",
+//   "IMG_3456.jpg",
+//   "IMG_3457.jpg",
+//   "IMG_3458.jpg",
+//   "IMG_3460.jpg",
+//   "IMG_3461.jpg",
+//   "IMG_3463.jpg",
+//   "IMG_3464.jpg",
+//   "IMG_3465.jpg",
+//   "IMG_3466.jpg",
+//   "IMG_3467.jpg",
+// ];
 ---
 
 <Layout>
-  <h1 class="text-2xl font-semibold text-left my-4">Cute Cottage for Rent!</h1>
-  <div class="space-y-4">
-    <p class="text-lg">
-      This charming freestanding cottage combines modern amenities with a cozy
-      atmosphere in a location that can’t be beaten.
+  <h1 class="text-2xl font-semibold text-left mb-4">Cute Cottage for Rent!</h1>
 
-      <p class="text-violet-600 font-bold text-xl">
-        Act fast – opportunities like this don’t last long!
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="">
+      <Image src={exterior} alt="outside" />
+    </div>
+    <div class="space-y-4">
+      <p class="text-xl font-bold text-red-700">
+        This charming freestanding cottage combines modern amenities with a cozy
+        atmosphere in a location that can’t be beat! Note: the cottage will be
+        furnished and move-in ready (Photos will be updated soon!).
+
+        <p class="text-violet-600 font-bold text-xl">
+          Act fast – opportunities like this don’t last long!
+        </p>
       </p>
-    </p>
 
-    <p class="text-xl font-semibold">
+      <p class="text-xl font-semibold">
+        <a
+          href="mailto:mattosurf@gmail.com"
+          class="text-red-700 underline hover:text-violet-700 font-bold"
+        >
+          Contact us today
+        </a> to schedule your tour!
+      </p>
+
+      <h3 class="text-3xl mt-4 font-bold">$2400/month</h3>
+
+      <!-- Uncomment if you want to include a Text Matt button -->
+      <!-- <a 
+      href="sms:+18314061190"
+      class="inline-block bg-green-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300"
+    >
+      Text Matt
+    </a> -->
+
+      <ul class="list-disc list-inside space-y-2 text-lg mb-2">
+        <li><span class="font-semibold">Available:</span> March 2025</li>
+        <li><span class="font-semibold">Deposit:</span> $2400</li>
+        <li><span class="font-semibold">1 Bedroom</span></li>
+        <li>
+          <span class="font-semibold">1 Full Bathroom</span> (shower over tub)
+        </li>
+        <li>Washer and Dryer</li>
+        <li>Private fenced yard area</li>
+        <li>Max Occupancy: <span class="font-semibold">2 people</span></li>
+        <li>
+          Small & quiet pets <span class="font-semibold text-primary"
+            >negotiable</span
+          >
+        </li>
+        <li>
+          Utilities included: <span class="font-semibold"
+            >Gas, Electric, Water</span
+          >
+        </li>
+      </ul>
       <a
         href="mailto:mattosurf@gmail.com"
-        class="text-red-600 underline hover:text-red-700 font-bold"
+        class="inline-block bg-violet-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition duration-100 mt-6 mb-12"
       >
-        Contact us today
-      </a> to schedule your tour!
-    </p>
-
-    <h3 class="text-3xl mt-4 font-bold">$2400/month</h3>
-
-    <!-- Uncomment if you want to include a Text Matt button -->
-    <!-- <a 
-	  href="sms:+18314061190"
-	  class="inline-block bg-green-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300"
-	>
-	  Text Matt
-	</a> -->
-
-    <ul class="list-disc list-inside space-y-2 text-lg mb-2">
-      <li><span class="font-semibold">Available:</span> March 2025</li>
-      <li><span class="font-semibold">Deposit:</span> $2400</li>
-      <li><span class="font-semibold">1 Bedroom</span></li>
-      <li>
-        <span class="font-semibold">1 Full Bathroom</span> (shower over tub)
-      </li>
-      <li>Washer and Dryer</li>
-      <li>Private fenced yard area</li>
-      <li>Max Occupancy: <span class="font-semibold">2 people</span></li>
-      <li>
-        Small & quiet pets <span class="font-semibold text-primary"
-          >negotiable</span
-        >
-      </li>
-      <li>
-        Utilities included: <span class="font-semibold"
-          >Gas, Electric, Water</span
-        >
-      </li>
-    </ul>
-    <a
-      href="mailto:mattosurf@gmail.com"
-      class="inline-block bg-violet-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition duration-100 mt-6 mb-12"
-    >
-      Email Matt
-    </a>
+        Email Matt
+      </a>
+    </div>
   </div>
 
   <!-- <div
