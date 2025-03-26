@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Gallery from "../components/Gallery.astro";
 import Footer from "../components/Footer.astro";
 import Image from "astro/components/Image.astro";
 import exterior from "../assets/exterior.jpg";
+import Gallery from "../components/Gallery.astro";
 
 // const images = [
 //   "IMG_3452.jpg",
@@ -34,15 +34,14 @@ import exterior from "../assets/exterior.jpg";
     <div class="space-y-4">
       <p class="text-xl font-bold text-red-700">
         This charming freestanding cottage combines modern amenities with a cozy
-        atmosphere in a location that can’t be beat! Note: the cottage will be
-        furnished and move-in ready (Photos will be updated soon!).
+        atmosphere in a location that can’t be beat! Utilities included.
 
         <p class="text-violet-600 font-bold text-xl">
           Act fast – opportunities like this don’t last long!
         </p>
       </p>
 
-      <h3 class="text-3xl mt-4 font-bold">$2900/month</h3>
+      <h3 class="text-3xl mt-4 font-bold">$2800/month</h3>
 
       <!-- Uncomment if you want to include a Text Matt button -->
       <!-- <a 
@@ -53,8 +52,8 @@ import exterior from "../assets/exterior.jpg";
     </a> -->
 
       <ul class="list-disc list-inside space-y-2 text-lg mb-2 font-semibold">
-        <li>Available: March 2025</li>
-        <li>Deposit: $2900</li>
+        <li>Available: mid-June 2025</li>
+        <li>Deposit: $2800</li>
         <li>Great location between UCSC and downtown Santa Cruz</li>
         <li>1 Bedroom</li>
         <li>1 Full Bathroom (shower over tub)</li>
@@ -72,7 +71,6 @@ import exterior from "../assets/exterior.jpg";
     </div>
   </div>
 
-  <Gallery />
 
   <p class="text-2xl font-semibold my-6">
     <a
@@ -82,5 +80,7 @@ import exterior from "../assets/exterior.jpg";
       Contact us today
     </a> to schedule your tour!
   </p>
+<Gallery />
+
 </Layout>
 <Footer />

@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import "photoswipe/style.css";
 ---
 
 <!doctype html>
@@ -9,8 +8,6 @@ import "photoswipe/style.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- <link rel="stylesheet" href="photoswipe/dist/photoswipe.css" /> -->
-
     <meta name="generator" content={Astro.generator} />
     <title>Cute Cottage for Rent</title>
   </head>
@@ -18,29 +15,21 @@ import "photoswipe/style.css";
     <div class="mx-auto px-4 2xl:px-0 max-w-6xl">
       <slot />
     </div>
-    <!-- Ensure PhotoSwipe runs only on the client -->
-    <script client:load type="module">
-      console.log("Astro script is running");
 
-      document.addEventListener("DOMContentLoaded", async () => {
-        console.log("Initializing PhotoSwipe");
+    <!-- Inline PhotoSwipe Initialization -->
+    <script type="module">
+      import PhotoSwipeLightbox from "photoswipe/lightbox";
+      import "photoswipe/style.css";
 
-        // Use full import path
-        const { default: PhotoSwipeLightbox } = await import(
-          "/node_modules/photoswipe/dist/photoswipe-lightbox.esm.js"
-        );
-
-        const lightbox = new PhotoSwipeLightbox({
-          gallery: "#gallery--getting-started",
-          children: "a",
-          pswpModule: () =>
-            import("/node_modules/photoswipe/dist/photoswipe.esm.js"),
-        });
-
-        lightbox.init();
-
-        console.log("PhotoSwipe initialized:", lightbox);
+      // Initialize PhotoSwipe
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: "#botanicalsGallery", // ID of your gallery container
+        children: "a", // Selector for clickable items
+        pswpModule: () => import("photoswipe"), // Dynamically load PhotoSwipe module
       });
+
+      lightbox.init();
+      console.log("PhotoSwipe initialized successfully.");
     </script>
   </body>
 </html>
