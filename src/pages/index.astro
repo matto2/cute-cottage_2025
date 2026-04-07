@@ -1,86 +1,255 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
-import Image from "astro/components/Image.astro";
-import exterior from "../assets/exterior.jpg";
+import { Image } from "astro:assets";
+import hero from "../assets/CuteCottage_IMG_0556.jpg";
 import Gallery from "../components/Gallery.astro";
-
-// const images = [
-//   "IMG_3452.jpg",
-//   "IMG_3453.jpg",
-//   "IMG_3455.jpg",
-//   "IMG_3456.jpg",
-//   "IMG_3457.jpg",
-//   "IMG_3458.jpg",
-//   "IMG_3460.jpg",
-//   "IMG_3461.jpg",
-//   "IMG_3463.jpg",
-//   "IMG_3464.jpg",
-//   "IMG_3465.jpg",
-//   "IMG_3466.jpg",
-//   "IMG_3467.jpg",
-// ];
 ---
 
 <Layout>
-  <h1 class="text-2xl font-semibold text-left mb-4">
-    🏡 Cute Cottage for Rent!
-  </h1>
+  <!-- ── Hero ── -->
+  <div class="hero relative overflow-hidden rounded-3xl mb-8 aspect-square md:aspect-auto md:h-screen md:rounded-none">
+    <Image
+      src={hero}
+      alt="Freestanding cottage exterior"
+      class="w-full h-full object-cover object-center"
+      widths={[800, 1200, 1600]}
+      sizes="(max-width: 768px) 100vw, 1200px"
+    />
+    <!-- gradient scrim -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="">
-      <Image src={exterior} class="rounded-4xl" alt="outside" />
+    <!-- overlay text -->
+    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white" style="text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="bg-white/20 backdrop-blur-sm border border-white/30 text-white text-xs font-semibold px-3 py-1 rounded-full">
+          Available July 2026
+        </span>
+        <span class="bg-violet-500/90 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+          All Utilities Included
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight tracking-tight mb-2 text-white">
+        Your Own Private Cottage in Santa Cruz
+      </h1>
+      <p class="text-white/80 text-sm md:text-lg">King St &nbsp;·&nbsp; Santa Cruz, CA 95060</p>
     </div>
-    <div class="space-y-4">
-      <p class="text-xl font-bold text-red-700">
-        This charming freestanding cottage combines modern amenities with a cozy
-        atmosphere in a location that can’t be beat! Utilities included.
+  </div>
 
-        <p class="text-violet-600 font-bold text-xl">
-          Act fast – opportunities like this don’t last long!
-        </p>
-      </p>
-
-      <h3 class="text-3xl mt-4 font-bold">$2800/month</h3>
-
-      <!-- Uncomment if you want to include a Text Matt button -->
-      <!-- <a 
-      href="sms:+18314061190"
-      class="inline-block bg-green-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300"
-    >
-      Text Matt
-    </a> -->
-
-      <ul class="list-disc list-inside space-y-2 text-lg mb-2 font-semibold">
-        <li>Available: mid-June 2025</li>
-        <li>Deposit: $2800</li>
-        <li>Great location between UCSC and downtown Santa Cruz</li>
-        <li>1 Bedroom</li>
-        <li>1 Full Bathroom (shower over tub)</li>
-        <li>Washer and Dryer</li>
-        <li>Private fenced yard area</li>
-        <li>Max Occupancy: 2 people</li>
-        <li>Utilities included: Gas, Electric, Water</li>
-      </ul>
+  <!-- ── Stats bar ── -->
+  <div class="flex flex-wrap items-center justify-between gap-4 border border-stone-200 rounded-2xl px-6 py-4 mb-10 bg-white shadow-sm">
+    <div class="flex flex-wrap gap-6 text-sm text-stone-500 divide-x divide-stone-200">
+      <div class="pr-6">
+        <span class="block text-2xl font-bold text-stone-900">$3,395</span>
+        <span>per month</span>
+      </div>
+      <div class="px-6">
+        <span class="block text-2xl font-bold text-stone-900">1</span>
+        <span>bedroom</span>
+      </div>
+      <div class="px-6">
+        <span class="block text-2xl font-bold text-stone-900">1</span>
+        <span>bathroom</span>
+      </div>
+      <div class="px-6">
+        <span class="block text-2xl font-bold text-stone-900">12</span>
+        <span>month lease</span>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a
+        href="tel:+18312752566"
+        class="bg-violet-600 text-white text-sm font-semibold py-2.5 px-5 rounded-xl hover:bg-violet-700 transition-colors text-center"
+      >
+        Call (831) 275-2566
+      </a>
       <a
         href="mailto:mattosurf@gmail.com"
-        class="inline-block bg-violet-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition duration-100 mt-6 mb-12"
+        class="border border-stone-300 text-stone-700 text-sm font-semibold py-2.5 px-5 rounded-xl hover:border-violet-400 hover:text-violet-700 transition-colors text-center"
       >
-        Email Matt
+        Send Email
       </a>
     </div>
   </div>
 
+  <!-- ── Body ── -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-16">
 
-  <p class="text-2xl font-semibold my-6">
-    <a
-      href="mailto:mattosurf@gmail.com"
-      class="text-red-700 underline hover:text-violet-700 font-bold"
-    >
-      Contact us today
-    </a> to schedule your tour!
-  </p>
-<Gallery />
+    <!-- Left: description -->
+    <div class="lg:col-span-2 space-y-10">
 
+      <section>
+        <p class="text-lg leading-relaxed text-stone-700">
+          A rare find in Santa Cruz — this freestanding, conforming ADU combines privacy, comfort, and an
+          unbeatable location. No shared walls, your own fenced yard, and all utilities covered.
+          Just move in and enjoy.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold mb-3 pb-2 border-b border-stone-200">The Space</h2>
+        <p class="leading-relaxed text-stone-600">
+          High ceilings and abundant natural light give this cottage an open, airy feel. The
+          well-appointed kitchen features a full-size gas stove and range with microwave above,
+          and the full-size bath includes a shower/tub combo. An in-unit stacked washer and dryer
+          make day-to-day living easy. Available unfurnished or partially furnished — your choice.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold mb-3 pb-2 border-b border-stone-200">What's Included</h2>
+        <p class="leading-relaxed text-stone-600">
+          All utilities — gas, electric, water, and garbage — are covered by the landlord.
+          No surprise bills, ever.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          {["⚡ Electricity", "🔥 Gas", "💧 Water", "♨️ Heat", "🗑️ Garbage Pickup"].map(u => (
+            <span class="bg-stone-100 text-stone-700 text-sm font-medium px-3 py-1.5 rounded-full">{u}</span>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold mb-3 pb-2 border-b border-stone-200">The Location</h2>
+        <p class="text-stone-600 mb-4 leading-relaxed">
+          Set on a quiet, tree-lined, bike-friendly street — you're minutes from everything Santa
+          Cruz has to offer.
+        </p>
+        <ul class="space-y-2.5 text-stone-700">
+          {[
+            ["1.4 mi", "to UCSC"],
+            ["1.0 mi", "to downtown Santa Cruz"],
+            ["1.5 mi", "to Cowell's Beach"],
+            ["Walking/biking", "to bus stops, cafés, restaurants & health food stores"],
+            ["Easy access", "to Highways 1 and 17"],
+          ].map(([label, detail]) => (
+            <li class="flex gap-3 items-baseline">
+              <span class="text-violet-600 font-semibold text-sm whitespace-nowrap">{label}</span>
+              <span class="text-stone-600 text-sm">{detail}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="flex gap-3 mt-5 text-xl" title="Transportation options">
+          <span title="Bus">🚌</span>
+          <span title="Bicycle">🚴</span>
+          <span title="Walking">🚶</span>
+          <span title="Driving">🚗</span>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold mb-3 pb-2 border-b border-stone-200">Apply</h2>
+        <p class="text-stone-600 text-sm mb-4">Download the rental application to get started.</p>
+        <a
+          href="/application.pdf"
+          download
+          class="inline-flex items-center gap-2 border border-stone-300 text-stone-700 text-sm font-semibold py-2.5 px-5 rounded-xl hover:border-violet-400 hover:text-violet-700 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v6m0 0l-3-3m3 3l3-3M12 3v9" />
+          </svg>
+          Download Application
+        </a>
+      </section>
+
+    </div>
+
+    <!-- Right: sidebar cards -->
+    <div class="space-y-5">
+
+      <!-- Contact card -->
+      <div class="border border-stone-200 rounded-2xl p-5 shadow-sm bg-white sticky top-6">
+        <p class="text-sm text-stone-500 mb-1">Contact landlord</p>
+        <p class="font-semibold text-stone-900 mb-4">Matthew O'Leary</p>
+        <div class="space-y-3">
+          <a
+            href="tel:+18312752566"
+            class="flex items-center gap-3 bg-violet-600 text-white text-sm font-semibold py-3 px-4 rounded-xl hover:bg-violet-700 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            (831) 275-2566
+          </a>
+          <a
+            href="mailto:mattosurf@gmail.com"
+            class="flex items-center gap-3 border border-stone-300 text-stone-700 text-sm font-semibold py-3 px-4 rounded-xl hover:border-violet-400 hover:text-violet-700 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            mattosurf@gmail.com
+          </a>
+        </div>
+        <p class="text-xs text-stone-400 mt-4 text-center">This one won't last — reach out today.</p>
+      </div>
+
+      <!-- Property details -->
+      <div class="border border-stone-200 rounded-2xl p-5 bg-white">
+        <p class="text-sm font-semibold text-stone-900 mb-4">Property Details</p>
+        <dl class="space-y-2.5 text-sm">
+          {[
+            ["Type", "Cottage (ADU)"],
+            ["Rent", "$3,395 / month"],
+            ["Lease", "12 months"],
+            ["Available", "July 1, 2026"],
+            ["Condition", "General maintenance"],
+            ["Landlord Occupied", "No"],
+          ].map(([label, value]) => (
+            <div class="flex justify-between gap-2">
+              <dt class="text-stone-400">{label}</dt>
+              <dd class="font-medium text-stone-700 text-right">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <!-- Amenities -->
+      <div class="border border-stone-200 rounded-2xl p-5 bg-white">
+        <p class="text-sm font-semibold text-stone-900 mb-4">Amenities</p>
+        <ul class="grid grid-cols-2 gap-y-2.5 text-sm text-stone-600">
+          {[
+            "🚲 Bike Storage",
+            "🌿 Outdoor Area",
+            "📦 Storage",
+            "🧊 Refrigerator",
+            "🍳 Gas Stove",
+            "📡 Microwave",
+            "🫧 Washer",
+            "💨 Dryer",
+          ].map(a => <li>{a}</li>)}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Gallery ── -->
+  <div class="mb-4">
+    <h2 class="text-lg font-semibold mb-6 pb-2 border-b border-stone-200">Photos</h2>
+    <Gallery />
+  </div>
+
+  <!-- ── Bottom CTA ── -->
+  <div class="mt-16 mb-4 rounded-3xl bg-violet-600 text-white px-8 py-12 text-center">
+    <h2 class="text-2xl font-bold mb-2">Ready to make it yours?</h2>
+    <p class="text-violet-200 mb-8 max-w-md mx-auto">
+      This freestanding cottage won't be on the market long. Get in touch today to schedule a showing.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a
+        href="tel:+18312752566"
+        class="bg-white text-violet-700 font-semibold py-3 px-8 rounded-xl hover:bg-violet-50 transition-colors"
+      >
+        Call (831) 275-2566
+      </a>
+      <a
+        href="mailto:mattosurf@gmail.com"
+        class="border border-white/40 text-white font-semibold py-3 px-8 rounded-xl hover:bg-white/10 transition-colors"
+      >
+        Send Email
+      </a>
+    </div>
+  </div>
 </Layout>
 <Footer />

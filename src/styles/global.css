@@ -1,27 +1,32 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 @import "tailwindcss";
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-    color: #44403C; /* Stone-800 equivalent */
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  color: #44403c; /* stone-700 */
+  background-color: #fafaf9; /* stone-50 */
 }
 
-h1 {
-    font-size: 3rem; /* Tailwind's text-5xl */
-    font-weight: bold;
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-    color: #7c3aed; /* Tailwind's text-violet-600 */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
 }
 
-h3 {
-    color: #7c3aed; /* Tailwind's text-violet-600 */
+/* break hero out of max-width container on desktop */
+@media (min-width: 768px) {
+  .hero {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
 }
 
 .pswp__bg {
-    background-color: rgba(76, 4, 179, 0.8) !important;
+  background-color: rgba(15, 10, 30, 0.92) !important;
 }
-
-/* Restore other styles as needed */

@@ -9,36 +9,201 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Cute Cottage for Rent</title>
+    <title>Your Own Private Cottage in Santa Cruz – 1BD/1BA, All Utilities Included</title>
   </head>
   <body>
-    <div class="mx-auto px-4 2xl:px-0 max-w-6xl">
+    <div class="mx-auto px-4 md:px-8 max-w-6xl py-8">
       <slot />
     </div>
 
-    <!-- Inline PhotoSwipe Initialization -->
-    <script type="module">
-      import PhotoSwipeLightbox from "photoswipe/lightbox";
-      import "photoswipe/style.css";
+    <!-- Lightbox -->
+    <div id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+      <img id="lb-img" src="" alt="" draggable="false" />
+      <button id="lb-close" aria-label="Close">&times;</button>
+      <button id="lb-prev" aria-label="Previous">&#8249;</button>
+      <button id="lb-next" aria-label="Next">&#8250;</button>
+      <div id="lb-counter"></div>
+    </div>
 
-      // Initialize PhotoSwipe
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: "#botanicalsGallery", // ID of your gallery container
-        children: "a", // Selector for clickable items
-        pswpModule: () => import("photoswipe"), // Dynamically load PhotoSwipe module
+    <script>
+      const lightbox  = document.getElementById('lightbox')!;
+      const lbImg     = document.getElementById('lb-img') as HTMLImageElement;
+      const lbCounter = document.getElementById('lb-counter')!;
+
+      let images: { src: string; alt: string }[] = [];
+      let current = 0;
+
+      /* ── open / close ── */
+      function open(index: number) {
+        current = index;
+        lbImg.style.transform = '';
+        lbImg.style.transition = '';
+        lbImg.src = images[current].src;
+        lbImg.alt = images[current].alt;
+        updateCounter();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function updateCounter() {
+        lbCounter.textContent = `${current + 1} / ${images.length}`;
+      }
+
+      /* ── navigate with slide animation ── */
+      function go(dir: -1 | 1) {
+        const w = window.innerWidth;
+        // slide current image out
+        lbImg.style.transition = 'transform 0.22s ease';
+        lbImg.style.transform  = `translateX(${dir * -w}px)`;
+
+        setTimeout(() => {
+          current = (current + dir + images.length) % images.length;
+          // snap new image in from opposite side, no transition
+          lbImg.style.transition = 'none';
+          lbImg.style.transform  = `translateX(${dir * w}px)`;
+          lbImg.src = images[current].src;
+          lbImg.alt = images[current].alt;
+          updateCounter();
+          // animate to centre
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            lbImg.style.transition = 'transform 0.22s ease';
+            lbImg.style.transform  = 'translateX(0)';
+          }));
+        }, 220);
+      }
+
+      /* ── wire up gallery ── */
+      document.addEventListener('DOMContentLoaded', () => {
+        const gallery = document.getElementById('botanicalsGallery');
+        if (!gallery) return;
+        const links = Array.from(gallery.querySelectorAll<HTMLAnchorElement>('a[data-src]'));
+        images = links.map(a => ({ src: a.dataset.src!, alt: a.dataset.alt || '' }));
+        links.forEach((a, i) => {
+          a.addEventListener('click', e => { e.preventDefault(); open(i); });
+        });
       });
 
-      lightbox.init();
-      console.log("PhotoSwipe initialized successfully.");
+      document.getElementById('lb-close')!.addEventListener('click', close);
+      document.getElementById('lb-prev')!.addEventListener('click', () => go(-1));
+      document.getElementById('lb-next')!.addEventListener('click', () => go(1));
+
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')  go(-1);
+        if (e.key === 'ArrowRight') go(1);
+      });
+
+      /* ── touch: follow finger, then slide on release ── */
+      let touchStartX = 0;
+      let touching    = false;
+
+      lightbox.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touching    = true;
+        lbImg.style.transition = 'none';
+      }, { passive: true });
+
+      lightbox.addEventListener('touchmove', e => {
+        if (!touching) return;
+        const dx = e.touches[0].clientX - touchStartX;
+        lbImg.style.transform = `translateX(${dx}px)`;
+      }, { passive: true });
+
+      lightbox.addEventListener('touchend', e => {
+        touching = false;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 60) {
+          go(dx < 0 ? 1 : -1);
+        } else {
+          lbImg.style.transition = 'transform 0.2s ease';
+          lbImg.style.transform  = 'translateX(0)';
+        }
+      });
     </script>
   </body>
 </html>
 
 <style>
-  html,
-  body {
-    margin: 0;
+  html, body { margin: 0; width: 100%; min-height: 100%; }
+
+  /* ── lightbox ── */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #000;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  #lightbox.open { display: block; }
+
+  #lb-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    user-select: none;
+    will-change: transform;
+  }
+
+  /* shared button base */
+  #lb-close, #lb-prev, #lb-next {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.15s;
+    z-index: 10;
+  }
+  #lb-close:hover, #lb-prev:hover, #lb-next:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  #lb-close {
+    top: 1rem; right: 1rem;
+    width: 2.5rem; height: 2.5rem;
+    font-size: 1.4rem;
+  }
+  #lb-prev, #lb-next {
+    top: 50%; transform: translateY(-50%);
+    width: 3rem; height: 3rem;
+    font-size: 2rem;
+  }
+  #lb-prev { left: 1rem; }
+  #lb-next { right: 1rem; }
+
+  /* hide arrows on mobile — swipe instead */
+  @media (max-width: 767px) {
+    #lb-prev, #lb-next { display: none; }
+  }
+
+  #lb-counter {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.55);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    z-index: 10;
+    pointer-events: none;
   }
 </style>

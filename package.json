@@ -10,9 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.0.3",
-    "astro": "^5.5.5",
-    "swiper": "^11.2.5"
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.4",
+    "swiper": "^11.2.5",
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@types/photoswipe": "^4.1.6"
