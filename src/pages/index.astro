@@ -19,6 +19,12 @@ import Gallery from "../components/Gallery.astro";
     <!-- gradient scrim -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
+    <!-- ── Open House Banner ── -->
+    <div class="open-house-banner">
+      <p class="oh-title">Open House!</p>
+      <p class="oh-detail">This weekend &mdash; Sat 4/25, 9am&ndash;12pm &nbsp;&bull;&nbsp; <a href="mailto:mattosurf@gmail.com" class="oh-email">mattosurf@gmail.com</a> for more info</p>
+    </div>
+
     <!-- overlay text -->
     <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white" style="text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
       <div class="flex flex-wrap items-center gap-2 mb-3">
@@ -30,7 +36,7 @@ import Gallery from "../components/Gallery.astro";
         </span>
       </div>
       <h1 class="text-3xl md:text-5xl font-bold leading-tight tracking-tight mb-2 text-white">
-        Your Own Private Cottage in Santa Cruz
+        Private Cottage — All Utilities Paid
       </h1>
       <p class="text-white/80 text-sm md:text-lg">King St &nbsp;·&nbsp; Santa Cruz, CA 95060</p>
     </div>
@@ -272,3 +278,45 @@ import Gallery from "../components/Gallery.astro";
   </div>
 </Layout>
 <Footer />
+
+<style>
+  .open-house-banner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff2d9b;
+    padding: 1.1rem 2rem;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.35);
+  }
+
+  .oh-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 0.15em;
+    line-height: 1;
+  }
+
+  .oh-detail {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(0.85rem, 2.5vw, 1.15rem);
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .oh-email {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .oh-email:hover { opacity: 0.8; }
+</style>
