@@ -19,12 +19,6 @@ import Gallery from "../components/Gallery.astro";
     <!-- gradient scrim -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
-    <!-- ── Open House Banner ── -->
-    <div class="open-house-banner">
-      <p class="oh-title">Open House!</p>
-      <p class="oh-detail">This weekend &mdash; Sat 4/25, 9am&ndash;12pm &nbsp;&bull;&nbsp; <a href="mailto:mattosurf@gmail.com" class="oh-email">mattosurf@gmail.com</a> for more info</p>
-    </div>
-
     <!-- overlay text -->
     <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white" style="text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
       <div class="flex flex-wrap items-center gap-2 mb-3">
@@ -46,7 +40,7 @@ import Gallery from "../components/Gallery.astro";
   <div class="flex flex-wrap items-center justify-between gap-4 border border-stone-200 rounded-2xl px-6 py-4 mb-10 bg-white shadow-sm">
     <div class="flex flex-wrap gap-6 text-sm text-stone-500 divide-x divide-stone-200">
       <div class="pr-6">
-        <span class="block text-2xl font-bold text-stone-900">$2,900</span>
+        <span class="block text-2xl font-bold text-stone-900">$2,800</span>
         <span>per month</span>
       </div>
       <div class="px-6">
@@ -215,7 +209,7 @@ import Gallery from "../components/Gallery.astro";
         <dl class="space-y-2.5 text-sm">
           {[
             ["Type", "Cottage (ADU)"],
-            ["Rent", "$2,900 / month"],
+            ["Rent", "$2,800 / month"],
             ["Utilities", "All included"],
             ["Lease", "12 months"],
             ["Available", "July 1, 2026"],
@@ -279,44 +273,3 @@ import Gallery from "../components/Gallery.astro";
 </Layout>
 <Footer />
 
-<style>
-  .open-house-banner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #ff2d9b;
-    padding: 1.1rem 2rem;
-    text-align: center;
-    z-index: 10;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.35);
-  }
-
-  .oh-title {
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    color: #fff;
-    margin: 0 0 0.15em;
-    line-height: 1;
-  }
-
-  .oh-detail {
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(0.85rem, 2.5vw, 1.15rem);
-    font-weight: 600;
-    color: rgba(255,255,255,0.92);
-    margin: 0;
-    letter-spacing: 0.01em;
-  }
-
-  .oh-email {
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .oh-email:hover { opacity: 0.8; }
-</style>
